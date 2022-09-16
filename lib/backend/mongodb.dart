@@ -25,4 +25,18 @@ class MongoDatabase {
       return e.toString();
     }
   }
+
+  static Future<String> login(MongoDbModel data) async {
+    try {
+      var authen = await userCollection.findOne(data.toJson());
+      if (authen.isSuccess) {
+        return "User found.";
+      } else {
+        return "User does not exist.";
+      }
+    } catch (e) {
+      print(e.toString());
+      return e.toString();
+    }
+  }
 }
