@@ -1,8 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_main_application/pages/home.dart';
+import 'package:flutter_main_application/pages/signin.dart';
 import 'package:flutter_main_application/onboard/onboard.dart';
 
 int? isviewed;
@@ -17,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override 
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => isviewed != 0 ? OnBoard() : Home())));
+    Timer(Duration(seconds: 3), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => isviewed != 0 ? OnBoard() : Signin())));
   }
 
   @override 
@@ -31,8 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
             begin: Alignment.topRight,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFFFF800B), 
-              Color(0xFFCE1010),
+              Color(0xFFFFFFFF), 
+              Color(0x1AFFFFFF),
             ],
           ),
         ),

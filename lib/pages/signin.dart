@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main_application/variables/constant.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Signin extends StatelessWidget {
+  const Signin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

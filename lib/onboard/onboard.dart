@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main_application/onboard/onboard_model.dart';
-import 'package:flutter_main_application/pages/home.dart';
+import 'package:flutter_main_application/pages/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../variables/constant.dart';
@@ -72,7 +72,7 @@ class _OnBoardState extends State<OnBoard> {
             onPressed: () {
               _storeOnboardInfo();
               Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => Home())
+                context, MaterialPageRoute(builder: (context) => Signin())
               );
             },
             child: Text(
@@ -97,7 +97,7 @@ class _OnBoardState extends State<OnBoard> {
           },
           itemBuilder: (_, index) {
             return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -151,7 +151,7 @@ class _OnBoardState extends State<OnBoard> {
                     if (index == screens.length - 1) {
                       await _storeOnboardInfo();
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Home()));
+                      MaterialPageRoute(builder: (context) => Signin()));
                     }
 
                     _pageController.nextPage(
@@ -166,7 +166,7 @@ class _OnBoardState extends State<OnBoard> {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Row(
-                      mainAxisSize: MainAxisSize.min, 
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           "Next",
