@@ -14,9 +14,8 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-    final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   
-
   User user = User('', '');
   @override
   Widget build(BuildContext context) {
