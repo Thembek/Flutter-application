@@ -38,7 +38,7 @@ class _SigninState extends State<Signin> {
                   style: GoogleFonts.pacifico(
                     fontWeight: FontWeight.bold,
                     fontSize: 50,
-                    color: Colors.white,
+                    color: Colors.blue,
                   ),
                 ),
               ),
