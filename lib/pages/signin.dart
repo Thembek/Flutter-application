@@ -14,7 +14,7 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-  final _formKey = GloabalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   Future save() async {
     var res = await http.post("http://localhost:8686/sigin",
       headers: <String, String>{
@@ -157,7 +157,7 @@ class _SigninState extends State<Signin> {
                           if (_formKey.currentState.validate()) {
                             save();
                           } else {
-                            print("Invalid user credentials.")
+                            print("Invalid user credentials.");
                           }
                         },
                         child: Text(
