@@ -62,9 +62,84 @@ class _SignupState extends State<Signup> {
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
-                                border
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.white,),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.black),
+                              ),
+                              hintText: 'carter@gmail.com',
+                              hintStyle: TextStyle(color: Colors.white),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
                             ),
+                          ),
+                          SizedBox(height: 30,),
+                          TextField(
+                            style: TextStyle(color: Colors.white),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.black),
+                              ),
+                              hintText: 'Password',
+                              hintStyle: TextStyle(color: Colors.white),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 40,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Sign Up',
+                                style: GoogleFonts.acme(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 27,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundColor: Color(0xff4c505b),
+                                child: IconButton(
+                                  color: Colors.white,
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.arrow_forward,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 40,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
+                                },
+                                child: Text(
+                                  'Sign in',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
