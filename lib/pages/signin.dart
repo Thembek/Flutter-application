@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_main_application/variables/constant.dart';
 
 class Signin extends StatelessWidget {
   const Signin({Key? key}) : super(key: key);
