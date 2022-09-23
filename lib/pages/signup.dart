@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
+import 'package:uri/uri.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_main_application/pages/user.dart';
 import 'package:flutter_main_application/pages/dashboard.dart';
@@ -19,9 +19,11 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   Future save() async {
-    var res = await http.post("http://localhost:8686/signup",
+    final _params = { "q": "dart"};
+    final Uri _uri = Uri.parse("http://localhost:8686/signup").replace(queryParameters: _params);
+    var res = await http.post(_uri,
       headers: <String, String> {
-        'Context-Type': 'application/json;charSet=UTF-8'
+        'Content-Type': 'application/json;charset=UTF-8'
       },
       body: <String, String> {
         'email': user.email,
