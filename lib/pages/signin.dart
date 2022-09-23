@@ -66,6 +66,9 @@ class _SigninState extends State<Signin> {
                           children: [
                             TextField(
                               controller: TextEditingController(text: user.email),
+                              onChanged: (value) {
+                                user.email = value;
+                              },
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -79,6 +82,9 @@ class _SigninState extends State<Signin> {
                             SizedBox(height: 30),
                             TextField(
                               controller: TextEditingController(text: user.password),
+                              onChanged:(value) {
+                                user.password = value;
+                              },
                               style: TextStyle(color: Colors.black),
                               obscureText: true,
                               decoration: InputDecoration(
