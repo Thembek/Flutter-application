@@ -29,6 +29,7 @@ class _SigninState extends State<Signin> {
         'password': user.password,
       }
     );
+    print(res.body);
     Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
