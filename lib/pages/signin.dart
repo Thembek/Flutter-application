@@ -20,7 +20,7 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  Future<void> save() async {
+  Future save() async {
     var res = await http.post(Uri.parse("http://localhost:8686/signin"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8'
