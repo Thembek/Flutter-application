@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uri/uri.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_main_application/pages/user.dart';
@@ -19,10 +20,10 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  Future save() async {
-    var res = await http.post('http://localhost:8686/signin',
+  Future<void> save() async {
+    var res = await http.post(Uri.parse("http://localhost:8686/signin"),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Content-Type': 'application/json; charset=UTF-8;'
       },
       body: <String, String>{
         'email': user.email,
@@ -30,6 +31,7 @@ class _SigninState extends State<Signin> {
       }
     );
     print(res.body);
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
