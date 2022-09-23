@@ -21,7 +21,7 @@ class _SignupState extends State<Signup> {
   Future<void> save() async {
     var res = await http.post(Uri.parse('http://localhost:8686/signup'),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8;'
+        'Content-Type': 'application/json; charset=UTF-8'
       },
       body: <String, String>{
         'email': user.email,
