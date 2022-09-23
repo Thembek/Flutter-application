@@ -153,6 +153,8 @@ class _SignupState extends State<Signup> {
                                   onPressed: () {
                                     if(_formKey.currentState!.validate()){
                                       save();
+                                    } else {
+                                      print('Please fill in both text fields.');
                                     }
                                   },
                                   icon: Icon(

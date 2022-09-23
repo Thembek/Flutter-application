@@ -20,7 +20,9 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
   Future save() async {
-    var res = await http.post("http://localhost:8686/signup", 
+    final _params = { "q": "dart"};
+    final Uri _uri = Uri.parse("http://localhost:8686/signup").replace(queryParameters: _params);
+    var res = await http.post(_uri,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8'
       },
@@ -130,6 +132,8 @@ class _SigninState extends State<Signin> {
                                     onPressed: () {
                                       if(_formKey.currentState!.validate()){
                                         save();
+                                      } else {
+                                        print('Invalid user credentials.');
                                       }
                                     },
                                     icon: Icon(
