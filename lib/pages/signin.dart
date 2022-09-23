@@ -64,10 +64,16 @@ class _SigninState extends State<Signin> {
                         margin: EdgeInsets.only(left: 35, right: 35),
                         child: Column(
                           children: [
-                            TextField(
+                            TextFormField(
                               controller: TextEditingController(text: user.email),
                               onChanged: (value) {
                                 user.email = value;
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty){
+                                  return 'Please enter your email address.';
+                                }
+                                return null;
                               },
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
@@ -80,10 +86,16 @@ class _SigninState extends State<Signin> {
                               ),
                             ),
                             SizedBox(height: 30),
-                            TextField(
+                            TextFormField(
                               controller: TextEditingController(text: user.password),
                               onChanged:(value) {
                                 user.password = value;
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your password.';
+                                }
+                                return null;
                               },
                               style: TextStyle(color: Colors.black),
                               obscureText: true,
