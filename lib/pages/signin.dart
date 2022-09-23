@@ -113,7 +113,9 @@ class _SigninState extends State<Signin> {
                                   child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      _insertData(emailController.text, passwwordController.text);
+                                      if(_formKey.currentState.validate()){
+                                        save();
+                                      }
                                     },
                                     icon: Icon(
                                       Icons.arrow_forward,
@@ -142,16 +144,6 @@ class _SigninState extends State<Signin> {
                                     ),
                                   ),
                                   style: ButtonStyle(),
-                                ),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Forgot Password',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 18,
-                                    ),
-                                  ),
                                 ),
                               ],
                             ),
