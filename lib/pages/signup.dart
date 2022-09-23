@@ -21,7 +21,7 @@ class _SignupState extends State<Signup> {
   Future save() async {
     var res = await http.post(Uri.parse('http://localhost:8686/signup'),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Context-Type': 'application/json; charSet=UTF-8'
       },
       body: <String, String>{
         'email': user.email,
@@ -158,7 +158,7 @@ class _SignupState extends State<Signup> {
                                     if(_formKey.currentState!.validate()){
                                       save();
                                     } else {
-                                      print('Error1 User Authentification failed.');
+                                      print('User authenticated.');
                                     }
                                   },
                                   icon: Icon(
