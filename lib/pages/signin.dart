@@ -29,9 +29,6 @@ class _SigninState extends State<Signin> {
     Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
-  var emailController = new TextEditingController();  
-  var passwwordController = new TextEditingController();
-
   User user = User('', '');
   @override
   Widget build(BuildContext context) {
@@ -68,7 +65,7 @@ class _SigninState extends State<Signin> {
                         child: Column(
                           children: [
                             TextField(
-                              controller: emailController,
+                              controller: TextEditingController(text: user.email),
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -81,7 +78,7 @@ class _SigninState extends State<Signin> {
                             ),
                             SizedBox(height: 30),
                             TextField(
-                              controller: passwwordController,
+                              controller: TextEditingController(text: user.password),
                               style: TextStyle(color: Colors.black),
                               obscureText: true,
                               decoration: InputDecoration(
