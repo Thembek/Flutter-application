@@ -138,8 +138,11 @@ class _SigninState extends State<Signin> {
                                   child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      save();
-                                      
+                                      if(_formKey.currentState!.validate()){
+                                        save();
+                                      } else {
+                                        print('User authenticated.');
+                                      }
                                     },
                                     icon: Icon(
                                       Icons.arrow_forward,

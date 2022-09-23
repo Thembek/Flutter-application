@@ -155,8 +155,11 @@ class _SignupState extends State<Signup> {
                                 child: IconButton(
                                   color: Colors.white,
                                   onPressed: () {
-                                    save();
-                                    
+                                    if(_formKey.currentState!.validate()){
+                                      save();
+                                    } else {
+                                      print('Error1 User Authentification failed.');
+                                    }
                                   },
                                   icon: Icon(
                                     Icons.arrow_forward,
