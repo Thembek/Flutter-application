@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_main_application/pages/user.dart';
 import 'package:flutter_main_application/pages/signup.dart';
 import 'package:flutter_main_application/pages/dashboard.dart';
 import 'package:flutter_main_application/variables/constant.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatefulWidget {
   const Signin({Key? key}) : super(key: key);
@@ -17,9 +20,25 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
   Future save() async {
+    var URL = "http://localhost:8686/signup";
+    final http.Response response = await http.post(
+      URL,
+      headers: <String, String> {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': user.email,
+        'password': user.password,
+      }),
+    );
+    print(response.body);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var parse = jsonDecode(response.body);
+
+    /*
     var res = await http.post("http://localhost:8686/signup", 
       headers: <String, String>{
-        'Context-Type': 'application/json;charSet=UTF-8'
+        'Content-Type': 'application/json; charset=UTF-8'
       },
       body: <String, String>{
         'email': user.email,
@@ -27,6 +46,7 @@ class _SigninState extends State<Signin> {
       }
     );
     Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
+    */
   }
 
   User user = User('', '');
