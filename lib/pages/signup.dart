@@ -18,6 +18,21 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
+  Future save() async {
+    var res = await http.post("http://localhost:8686/signup",
+      headers: <String, String> {
+        'Context-Type': 'application/json;charSet=UTF-8'
+      },
+      body: <String, String> {
+        'email': user.email,
+        'password': user.password,
+      }
+    );
+    print(res.body);
+    Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
+  }
+
+  User user = User('', '');
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +73,17 @@ class _SignupState extends State<Signup> {
                       margin: EdgeInsets.only(left: 35, right: 35),
                       child: Column(
                         children: [
-                          TextField(
+                          TextFormField(
+                            controller: TextEditingController(text: user.email),
+                            onChanged: (value) {
+                              user.email = value;
+                            },
+                            validator: (value) {
+                              if(value == null || value.isEmpty) {
+                                return 'Your email address, is required.';
+                              }
+                              return null;
+                            },
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
@@ -77,7 +102,17 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                           SizedBox(height: 30,),
-                          TextField(
+                          TextFormField(
+                            controller: TextEditingController(text: user.password),
+                            onChanged: (value) {
+                              user.password = value;
+                            },
+                            validator: (value) {
+                              if(value == null || value.isEmpty) {
+                                return 'Your password is required.';
+                              }
+                              return null;
+                            },
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -113,7 +148,11 @@ class _SignupState extends State<Signup> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                   color: Colors.white,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if(_formKey.currentState!.validate()){
+                                      save();
+                                    }
+                                  },
                                   icon: Icon(
                                     Icons.arrow_forward,
                                   ),
