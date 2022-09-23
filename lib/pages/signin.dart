@@ -20,7 +20,7 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  Future save() async {
+  Future<void> save() async {
     var res = await http.post(Uri.parse("http://localhost:8686/signin"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8;'
@@ -78,8 +78,12 @@ class _SigninState extends State<Signin> {
                               validator: (value) {
                                 if (value == null || value.isEmpty){
                                   return 'Please enter your email address.';
+                                } else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                                  return null;
+                                } else {
+                                  return 'Enter valid credential.';
                                 }
-                                return null;
+                                
                               },
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
@@ -100,8 +104,11 @@ class _SigninState extends State<Signin> {
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter your password.';
+                                } else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                                  return null;
+                                } else {
+                                  return 'Enter valid credential.';
                                 }
-                                return null;
                               },
                               style: TextStyle(color: Colors.black),
                               obscureText: true,
@@ -131,11 +138,8 @@ class _SigninState extends State<Signin> {
                                   child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      if(_formKey.currentState!.validate()){
-                                        save();
-                                      } else {
-                                        print('Invalid user credentials.');
-                                      }
+                                      save();
+                                      
                                     },
                                     icon: Icon(
                                       Icons.arrow_forward,

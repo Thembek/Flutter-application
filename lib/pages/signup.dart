@@ -18,7 +18,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  Future save() async {
+  Future<void> save() async {
     var res = await http.post(Uri.parse('http://localhost:8686/signup'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8;'
@@ -81,8 +81,11 @@ class _SignupState extends State<Signup> {
                             validator: (value) {
                               if(value == null || value.isEmpty) {
                                 return 'Your email address, is required.';
+                              } else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                                return null;
+                              } else {
+                                return 'Enter valid credential';
                               }
-                              return null;
                             },
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -110,8 +113,11 @@ class _SignupState extends State<Signup> {
                             validator: (value) {
                               if(value == null || value.isEmpty) {
                                 return 'Your password is required.';
+                              } else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                                return null;
+                              } else {
+                                return 'Enter valid credential.';
                               }
-                              return null;
                             },
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
@@ -149,11 +155,8 @@ class _SignupState extends State<Signup> {
                                 child: IconButton(
                                   color: Colors.white,
                                   onPressed: () {
-                                    if(_formKey.currentState!.validate()){
-                                      save();
-                                    } else {
-                                      print('Please fill in both text fields.');
-                                    }
+                                    save();
+                                    
                                   },
                                   icon: Icon(
                                     Icons.arrow_forward,
