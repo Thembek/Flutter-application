@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_main_application/pages/user.dart';
 import 'package:flutter_main_application/pages/signup.dart';
+import 'package:flutter_main_application/pages/dashboard.dart';
 import 'package:flutter_main_application/variables/constant.dart';
 
 class Signin extends StatefulWidget {
@@ -15,7 +16,22 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  
+  Future save() async {
+    var res = await http.post("http://localhost:8686/signup", 
+      headers: <String, String>{
+        'Context-Type': 'application/json;charSet=UTF-8'
+      },
+      body: <String, String>{
+        'email': user.email,
+        'password': user.password,
+      }
+    );
+    Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
+  }
+
+  var emailController = new TextEditingController();  
+  var passwwordController = new TextEditingController();
+
   User user = User('', '');
   @override
   Widget build(BuildContext context) {
@@ -52,6 +68,7 @@ class _SigninState extends State<Signin> {
                         child: Column(
                           children: [
                             TextField(
+                              controller: emailController,
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -64,6 +81,7 @@ class _SigninState extends State<Signin> {
                             ),
                             SizedBox(height: 30),
                             TextField(
+                              controller: passwwordController,
                               style: TextStyle(color: Colors.black),
                               obscureText: true,
                               decoration: InputDecoration(
@@ -92,7 +110,7 @@ class _SigninState extends State<Signin> {
                                   child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      
+                                      _insertData(emailController.text, passwwordController.text);
                                     },
                                     icon: Icon(
                                       Icons.arrow_forward,
