@@ -19,19 +19,16 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   Future save() async {
-    final _params = { "q": "dart"};
-    final Uri _uri = Uri.parse("http://localhost:8686/signup").replace(queryParameters: _params);
-    var res = await http.post(_uri,
-      headers: <String, String> {
-        'Content-Type': 'application/json;charset=UTF-8'
+    var res = await http.post('http://localhost:8686/signup',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8'
       },
-      body: <String, String> {
+      body: <String, String>{
         'email': user.email,
         'password': user.password,
       }
     );
-    print(res.body);
-    Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
+    Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
   User user = User('', '');
