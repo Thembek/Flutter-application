@@ -16,7 +16,7 @@ class _OnBoardState extends State<OnBoard> {
   List<OnboardModel> screens = <OnboardModel>[
     OnboardModel(
        img: 'assets/images/front-end.png',
-      text: "Software Engineers",
+      text: "Meet Our Software Engineers",
       desc:
           "Encounter new and upcoming software developers.",
       bg: Colors.white,
