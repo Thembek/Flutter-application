@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Column(
               children: [
-                Image.asset('assets/images/webdevelopment.png', height: 300.0, width: 300.0),
+                Image.asset('assets/images/younglings.png', height: 300.0, width: 300.0),
                 Text(
                   "An experience like none othter\n at your fingertips.",
                   textAlign: TextAlign.center,
