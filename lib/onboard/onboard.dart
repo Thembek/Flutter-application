@@ -34,7 +34,7 @@ class _OnBoardState extends State<OnBoard> {
       img: 'assets/images/img-3.png',
       text: "Founders And Builders",
       desc:
-          "Get to see how projects are managed and developed.",
+          "Get to monitor the projects under development, over a spacified period.",
       bg: Colors.white,
       button: Color(0xFF4756DF),
     ),
