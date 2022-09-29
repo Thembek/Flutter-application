@@ -20,14 +20,14 @@ class _OnBoardState extends State<OnBoard> {
       desc:
           "Encounter new and upcoming software developers.",
       bg: Colors.white,
-      button: Color(0xFF4756DF),
+      button: Color(0xFF1B5E20),
     ),
     OnboardModel(
       img: 'assets/images/designer.png',
       text: "Our UI/UX Design Team",
       desc:
           "Get a look and feel at the cool project designs of our UI/UX design squad.",
-      bg: Color(0xFF4756DF),
+      bg: Color(0xFF1B5E20),
       button: Colors.white,
     ),
     OnboardModel(
@@ -36,7 +36,7 @@ class _OnBoardState extends State<OnBoard> {
       desc:
           "Get to monitor the projects under development, over a spacified period.",
       bg: Colors.white,
-      button: Color(0xFF4756DF),
+      button: Color(0xFF1B5E20),
     ),
   ];
 
@@ -78,7 +78,7 @@ class _OnBoardState extends State<OnBoard> {
             child: Text(
               "Skip",
               style: TextStyle(
-                color: currentIndex % 2 == 0 ? kblack : kwhite,
+                color: currentIndex % 2 == 0 ? kblue : kwhite,
               ),
             ),
           ),
