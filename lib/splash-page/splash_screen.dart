@@ -44,19 +44,13 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Column(
               children: [
-                Image.asset('assets/images/younglings.png', height: 450.0, width: 450.0),
-                Text(
-                  "An experience like none othter\n at your fingertips.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22.5,
-                  ),
-                ),
+                Image.asset('assets/images/younglings.png', height: 550.0, width: 550.0),
+                
               ],
             ),
-            CircularProgressIndicator(),
+            CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 14, 92, 17)),
+            ),
           ],
         ),
       ),
