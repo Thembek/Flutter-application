@@ -24,9 +24,9 @@ class _OnBoardState extends State<OnBoard> {
     ),
     OnboardModel(
       img: 'assets/images/designer.png',
-      text: "UI / UX Design",
+      text: "Our UI/UX Design Team",
       desc:
-          "Get a glips of cool new upcoming application designs.",
+          "Get a feel at the cool designs of the applications we develope.",
       bg: Color(0xFF4756DF),
       button: Colors.white,
     ),
