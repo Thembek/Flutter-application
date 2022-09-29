@@ -16,9 +16,9 @@ class _OnBoardState extends State<OnBoard> {
   List<OnboardModel> screens = <OnboardModel>[
     OnboardModel(
        img: 'assets/images/front-end.png',
-      text: "Here As User We Get To Explore",
+      text: "Software Engineers",
       desc:
-          "Get to encounter an unlimited possibilities of knowledge from other users.",
+          "Encounter new and upcoming software developers.",
       bg: Colors.white,
       button: Color(0xFF4756DF),
     ),
@@ -26,7 +26,7 @@ class _OnBoardState extends State<OnBoard> {
       img: 'assets/images/designer.png',
       text: "Here As User We Get To Explore",
       desc:
-          "Get to encounter an unlimited possibilities of knowledge from other users.",
+          "Encounter an unlimited possibilities of knowledge from other users.",
       bg: Color(0xFF4756DF),
       button: Colors.white,
     ),
