@@ -23,7 +23,7 @@ class _SigninState extends State<Signin> {
   Future save() async {
     var res = await http.post(Uri.parse("http://localhost:8686/signin"),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Context-Type': 'application/json; charset=UTF-8'
       },
       body: <String, String>{
         'email': user.email,
