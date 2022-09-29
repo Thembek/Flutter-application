@@ -15,7 +15,7 @@ class _OnBoardState extends State<OnBoard> {
   late PageController _pageController;
   List<OnboardModel> screens = <OnboardModel>[
     OnboardModel(
-       img: 'assets/images/img-1.png',
+       img: 'assets/images/front-end.png',
       text: "Here As User We Get To Explore",
       desc:
           "Get to encounter an unlimited possibilities of knowledge from other users.",
@@ -23,7 +23,7 @@ class _OnBoardState extends State<OnBoard> {
       button: Color(0xFF4756DF),
     ),
     OnboardModel(
-      img: 'assets/images/img-2.png',
+      img: 'assets/images/designer.png',
       text: "Here As User We Get To Explore",
       desc:
           "Get to encounter an unlimited possibilities of knowledge from other users.",
