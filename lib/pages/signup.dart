@@ -155,11 +155,7 @@ class _SignupState extends State<Signup> {
                                 child: IconButton(
                                   color: Colors.white,
                                   onPressed: () {
-                                    if(_formKey.currentState!.validate()){
-                                      save();
-                                    } else {
-                                      print('User authenticated.');
-                                    }
+                                    save();
                                   },
                                   icon: Icon(
                                     Icons.arrow_forward,
