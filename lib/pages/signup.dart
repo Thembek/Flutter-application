@@ -34,6 +34,8 @@ class _SignupState extends State<Signup> {
 
   User user = User('', '');
 
+  bool passVisi = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -120,8 +122,16 @@ class _SignupState extends State<Signup> {
                               }
                             },
                             style: TextStyle(color: Colors.white),
-                            obscureText: true,
+                            obscureText: passVisi,
                             decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    passVisi=!passVisi;
+                                  });
+                                },
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.white),

@@ -36,6 +36,9 @@ class _SigninState extends State<Signin> {
   }
 
   User user = User('', '');
+
+  bool passVisi = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -111,8 +114,16 @@ class _SigninState extends State<Signin> {
                                 }
                               },
                               style: TextStyle(color: Colors.black),
-                              obscureText: true,
+                              obscureText: passVisi,
                               decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(Icons.visibility_off),
+                                  onPressed: () {
+                                    setState(() {
+                                      passVisi = !passVisi;
+                                    });
+                                  }
+                                ),
                                 fillColor: Colors.grey.shade100,
                                 filled: true,
                                 hintText: "Password",
