@@ -122,6 +122,7 @@ class _SigninState extends State<Signin> {
                               style: TextStyle(color: Colors.black),
                               obscureText: passVisi,
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.password_outlined),
                                 suffixIcon: IconButton(
                                   icon: Icon(passVisi ? Icons.visibility_off : Icons.visibility),
                                   onPressed: () {
@@ -146,11 +147,11 @@ class _SigninState extends State<Signin> {
                                 width: 400,
                                 // ignore: deprecated_member_use
                                 child: Container(
-                                  color: Colors.green[900],
+                                  color: Colors.blue,
                                   child: RawMaterialButton(
                                     elevation: 0.0,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12.0),
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     onPressed: () {
                                        save();
@@ -159,7 +160,7 @@ class _SigninState extends State<Signin> {
                                       "Signin",
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                       ),
                                     ),
                                   ),
