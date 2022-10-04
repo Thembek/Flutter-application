@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_main_application/pages/user.dart';
 import 'package:flutter_main_application/pages/signup.dart';
 import 'package:flutter_main_application/pages/dashboard.dart';
-import 'package:flutter_main_application/variables/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatefulWidget {
@@ -90,14 +89,14 @@ class _SigninState extends State<Signin> {
                               },
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.email_outlined, color: Colors.green[900]),
+                                prefixIcon: Icon(Icons.email_outlined, color: Colors.blueGrey),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.white),
+                                  borderSide: BorderSide(color: Colors.black),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.green),
+                                  borderSide: BorderSide(color: Colors.black),
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -145,54 +144,62 @@ class _SigninState extends State<Signin> {
                               ),
                             ),
                             SizedBox(height: 40),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Sign in',
-                                  style: GoogleFonts.acme(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 27,
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(35, 16, 30, 0),
+                              child: Container(
+                                height: 50,
+                                width: 400,
+                                // ignore: deprecated_member_use
+                                child: FlatButton(
+                                  color: Colors.green[900],
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
                                   ),
-                                ),
-                                CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor: Color(0xff4c505b),
-                                  child: IconButton(
-                                    color: Colors.white,
-                                    onPressed: () {
-                                      save();
-                                    },
-                                    icon: Icon(
-                                      Icons.arrow_forward,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                TextButton(
                                   onPressed: () {
-                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => Signup()));
-                                  }, 
+                                    if(_formKey.currentState!.validate()) {
+                                      save();
+                                    } else {
+                                      print('Welcome back, ${user.email}');
+                                    }
+                                  },
                                   child: Text(
-                                    'Sign Up',
-                                    textAlign: TextAlign.left,
+                                    "Signin",
                                     style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18
+                                      color: Colors.white,
+                                      fontSize: 20,
                                     ),
                                   ),
-                                  style: ButtonStyle(),
                                 ),
-                              ],
+                              ),
                             ),
+                            SizedBox(height: 50),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(65, 20, 0, 0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Don't have an account? ",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(context, new MaterialPageRoute(builder: (context) => Signup()));
+                                    },
+                                    child: Text(
+                                      "Signup",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            
                           ],
                         ),
                       ),
