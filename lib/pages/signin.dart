@@ -89,10 +89,11 @@ class _SigninState extends State<Signin> {
                               },
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
+                                hintText: 'carter@gmail.com',
                                 prefixIcon: Icon(Icons.email_outlined, color: Colors.blueGrey),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.black),
+                                  borderSide: BorderSide(color: Colors.grey),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -100,12 +101,6 @@ class _SigninState extends State<Signin> {
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                ),
-                                labelText: 'E-mail',
-                                labelStyle: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),
@@ -177,7 +172,7 @@ class _SigninState extends State<Signin> {
                               child: Row(
                                 children: [
                                   Text(
-                                    "Don't have an account? ",
+                                    "Don't have an account?  ",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
