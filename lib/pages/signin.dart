@@ -150,23 +150,22 @@ class _SigninState extends State<Signin> {
                                 height: 50,
                                 width: 400,
                                 // ignore: deprecated_member_use
-                                child: FlatButton(
+                                child: Container(
                                   color: Colors.green[900],
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  onPressed: () {
-                                    if(_formKey.currentState!.validate()) {
-                                      save();
-                                    } else {
-                                      print('Welcome back, ${user.email}');
-                                    }
-                                  },
-                                  child: Text(
-                                    "Signin",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
+                                  child: RawMaterialButton(
+                                    elevation: 0.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    onPressed: () {
+                                       save();
+                                      },
+                                    child: Text(
+                                      "Signin",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -199,7 +198,6 @@ class _SigninState extends State<Signin> {
                                 ],
                               ),
                             ),
-                            
                           ],
                         ),
                       ),
