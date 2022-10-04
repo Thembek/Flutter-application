@@ -91,6 +91,7 @@ class _SignupState extends State<Signup> {
                             },
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.email_outlined, color: Colors.black),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.white,),
@@ -99,10 +100,14 @@ class _SignupState extends State<Signup> {
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.black),
                               ),
-                              hintText: 'carter@gmail.com',
-                              hintStyle: TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelText: 'E-mail',
+                              labelStyle: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),

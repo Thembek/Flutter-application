@@ -90,11 +90,23 @@ class _SigninState extends State<Signin> {
                               },
                               style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "carter@gmail.com",
+                                prefixIcon: Icon(Icons.email_outlined, color: Colors.green[900]),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.green),
+                                ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
+                                ),
+                                labelText: 'E-mail',
+                                labelStyle: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),
