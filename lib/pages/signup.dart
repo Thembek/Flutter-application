@@ -125,7 +125,7 @@ class _SignupState extends State<Signup> {
                             obscureText: passVisi,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
-                                icon: Icon(Icons.visibility_off),
+                                icon: Icon(passVisi ? Icons.visibility_off : Icons.visibility),
                                 onPressed: () {
                                   setState(() {
                                     passVisi=!passVisi;
