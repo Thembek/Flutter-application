@@ -167,7 +167,22 @@ class _SigninState extends State<Signin> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 50),
+                            SizedBox(height: 20),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(160, 0, 0, 0),
+                              child: Row(
+                                children:[
+                                  Text(
+                                    "OR",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                )
+                                ],
+                              ),
+                            ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(65, 20, 0, 0),
                               child: Row(
