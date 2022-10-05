@@ -41,7 +41,7 @@ class _SignupState extends State<Signup> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/register.png'),
+          image: AssetImage('assets/images/login.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -91,10 +91,11 @@ class _SignupState extends State<Signup> {
                             },
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.email_outlined, color: Colors.black),
+                              hintText: 'carter@gmail.com',
+                              prefixIcon: Icon(Icons.email_outlined, color: Colors.grey),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white,),
+                                borderSide: BorderSide(color: Colors.black,),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -102,12 +103,6 @@ class _SignupState extends State<Signup> {
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                              ),
-                              labelText: 'E-mail',
-                              labelStyle: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
@@ -129,6 +124,7 @@ class _SignupState extends State<Signup> {
                             style: TextStyle(color: Colors.white),
                             obscureText: passVisi,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.lock_outline),
                               suffixIcon: IconButton(
                                 icon: Icon(passVisi ? Icons.visibility_off : Icons.visibility),
                                 onPressed: () {
@@ -139,65 +135,87 @@ class _SignupState extends State<Signup> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white),
+                                borderSide: BorderSide(color: Colors.black),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.black),
                               ),
                               hintText: 'Password',
-                              hintStyle: TextStyle(color: Colors.white),
+                              hintStyle: TextStyle(color: Colors.grey),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
                           ),
                           SizedBox(height: 40,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Sign Up',
-                                style: GoogleFonts.acme(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 27,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: Color(0xff4c505b),
-                                child: IconButton(
-                                  color: Colors.white,
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(35, 16, 30, 0),
+                            child: Container(
+                              height: 50,
+                              width: 400,
+                              child: Container(
+                                color: Colors.blue,
+                                child: RawMaterialButton(
+                                  elevation: 0.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),                        
+                                  ),
                                   onPressed: () {
                                     save();
                                   },
-                                  icon: Icon(
-                                    Icons.arrow_forward,
+                                  child: Text(
+                                    "Signup",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
                           SizedBox(height: 40,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
-                                },
-                                child: Text(
-                                  'Sign in',
-                                  textAlign: TextAlign.left,
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(160, 0, 0, 0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "OR",
                                   style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 18,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(65, 20, 0, 0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Already have an account? ",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
+                                  },
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

@@ -57,7 +57,7 @@ class _SigninState extends State<Signin> {
                   'Welcome\nBack',
                   style: GoogleFonts.pacifico(
                     fontWeight: FontWeight.bold,
-                    fontSize: 50,
+                    fontSize: 25,
                     color: Colors.blue,
                   ),
                 ),
@@ -157,7 +157,7 @@ class _SigninState extends State<Signin> {
                                        save();
                                       },
                                     child: Text(
-                                      "Signin",
+                                      "Login",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
@@ -188,7 +188,7 @@ class _SigninState extends State<Signin> {
                               child: Row(
                                 children: [
                                   Text(
-                                    "Don't have an account?  ",
+                                    "Don't have an account? ",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
