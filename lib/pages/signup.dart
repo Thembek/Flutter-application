@@ -89,7 +89,7 @@ class _SignupState extends State<Signup> {
                                 return 'Enter valid credential';
                               }
                             },
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               hintText: 'carter@gmail.com',
                               prefixIcon: Icon(Icons.email_outlined, color: Colors.grey),
@@ -121,7 +121,7 @@ class _SignupState extends State<Signup> {
                                 return 'Enter valid credential.';
                               }
                             },
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.black),
                             obscureText: passVisi,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock_outline),
