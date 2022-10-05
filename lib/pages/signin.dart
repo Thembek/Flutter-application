@@ -122,7 +122,7 @@ class _SigninState extends State<Signin> {
                               style: TextStyle(color: Colors.black),
                               obscureText: passVisi,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.password_outlined),
+                                prefixIcon: Icon(Icons.lock_outline),
                                 suffixIcon: IconButton(
                                   icon: Icon(passVisi ? Icons.visibility_off : Icons.visibility),
                                   onPressed: () {
