@@ -20,7 +20,7 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
   Future save() async {
-    var res = await http.post(Uri.parse("http://localhost:8686/signin"),
+    var res = http.post(Uri.parse("http://localhost:8686/signin"),
       headers: <String, String>{
         'Context-Type': 'application/json; charset=UTF-8'
       },
@@ -29,7 +29,7 @@ class _SigninState extends State<Signin> {
         'password': user.password,
       }
     );
-    print(res.body);
+    print(res);
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
   }
