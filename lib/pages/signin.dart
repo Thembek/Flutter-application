@@ -60,6 +60,8 @@ class _SigninState extends State<Signin> {
 
   @override
   Widget build(BuildContext context) {
+    String _email;
+    String _password;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -161,37 +163,23 @@ class _SigninState extends State<Signin> {
                             ),
                             SizedBox(height: 40),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(35, 16, 30, 0),
-                              child: Container(
-                                height: 50,
-                                width: 400,
-                                // ignore: deprecated_member_use
-                                child: Container(
-                                  color: Colors.blue,
-                                  child: RawMaterialButton(
-                                    elevation: 0.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    onPressed: 
-                                      _emailController == "" || _passwordController == ""
-                                        ? null
-                                        : () {
-                                          setState(() {
-                                            _isLoading = true;
-                                          });
-                                          signIn(_emailController.text, _passwordController.text);
-                                        },
-                                    child: Text(
-                                      "Login",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                      ),
-                                    ),
+                              padding: EdgeInsets.all(20.0),
+                              child: Center(
+                                child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green[900],
+                                  foregroundColor: Colors.white,
+                                ),
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
                                   ),
                                 ),
+                                onPressed: () {},
                               ),
+                              ), 
                             ),
                             SizedBox(height: 20),
                             Padding(
