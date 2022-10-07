@@ -26,7 +26,7 @@ class _OnBoardState extends State<OnBoard> {
       img: 'assets/images/designer.png',
       text: "Our UI/UX Design Team",
       desc:
-          "Get a look and feel at the cool project, designed by our UI/UX design squad.",
+          "Get a look and feel at the cool projects, designed by our UI/UX design squad.",
       bg: Color(0xFF1B5E20),
       button: Colors.white,
     ),
