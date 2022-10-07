@@ -156,11 +156,7 @@ class _SigninState extends State<Signin> {
                     ),
                     child: Text("Login"),
                     onPressed: () {
-                      if(_formKey.currentState!.validate()) {
-                        save();
-                      } else {
-                        print("Valid user credentials!");
-                      }
+                      save();
                     },
                   ),
                 ),
