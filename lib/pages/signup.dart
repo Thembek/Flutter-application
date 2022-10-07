@@ -109,7 +109,7 @@ class _SignupState extends State<Signup> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    child: Text("Login"),
+                    child: Text("Signup"),
                     onPressed: () {},
                   ),
                 ),
@@ -119,7 +119,7 @@ class _SignupState extends State<Signup> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account? ',
+                    'Already have an account? ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -129,7 +129,7 @@ class _SignupState extends State<Signup> {
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
                     },
                     child: Text(
-                      "signup",
+                      "Signup",
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
