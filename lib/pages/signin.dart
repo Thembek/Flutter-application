@@ -131,7 +131,7 @@ class _SigninState extends State<Signin> {
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => Signup()));
                     },
                     child: Text(
-                      "signup",
+                      "Signup",
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,

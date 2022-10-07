@@ -129,7 +129,7 @@ class _SignupState extends State<Signup> {
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => Signin()));
                     },
                     child: Text(
-                      "Signup",
+                      "Login",
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
