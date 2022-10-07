@@ -18,7 +18,7 @@ class _OnBoardState extends State<OnBoard> {
        img: 'assets/images/front-end.png',
       text: "Meet Our Software Engineers",
       desc:
-          "Encounter new and upcoming software developers.",
+          "Encounter, our new and upcoming software developers.",
       bg: Colors.white,
       button: Color(0xFF1B5E20),
     ),
@@ -26,15 +26,15 @@ class _OnBoardState extends State<OnBoard> {
       img: 'assets/images/designer.png',
       text: "Our UI/UX Design Team",
       desc:
-          "Get a look and feel at the cool project designs of our UI/UX design squad.",
+          "Get a look and feel at the cool project, designed by our UI/UX design squad.",
       bg: Color(0xFF1B5E20),
       button: Colors.white,
     ),
     OnboardModel(
       img: 'assets/images/img-3.png',
-      text: "Founders And Builders",
+      text: "Our Founders And Builders",
       desc:
-          "Get to monitor the projects under development, over a spacified period.",
+          "Get to third hand monitor, visually, the projects under development, by our founders and builders.",
       bg: Colors.white,
       button: Color(0xFF1B5E20),
     ),
