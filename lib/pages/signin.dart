@@ -19,19 +19,39 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  Future save() async {
-    var res = http.post(Uri.parse("http://localhost:8686/signin"),
-      headers: <String, String>{
-        'Context-Type': 'application/json; charset=UTF-8'
-      },
-      body: <String, String>{
-        'email': user.email,
-        'password': user.password,
-      }
-    );
-    print(res);
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+
+  signIn(String email, String pass) async {
+    String url = "http://localhost:8686/signup"; 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Navigator.push(context, new MaterialPageRoute(builder: (context) => Dashboard()));
+    var jsonResponse;
+    Map body = {"email": email, "password": pass};
+    var res = await http.post(Uri.parse(url), body: body);
+
+    if(res.statusCode == 200) {
+      jsonResponse = json.decode(res.body);
+      print("Response status: ${res.statusCode}");
+      print("Reponse status: ${res.body}");
+
+      if(jsonResponse != null) {
+        setState(() {
+          _isLoading: false;
+        });
+
+        sharedPreferences.setString("token", jsonResponse['token']);
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => Dashboard()), 
+          (Route<dynamic> route) => false);
+      } else {
+        setState(() {
+          _isLoading == false;
+        });
+        print("Response status: ${res.body}");
+      }
+    }
   }
 
   User user = User('', '');
@@ -73,7 +93,7 @@ class _SigninState extends State<Signin> {
                         child: Column(
                           children: [
                             TextFormField(
-                              controller: TextEditingController(text: user.email),
+                              controller: _emailController,
                               onChanged: (value) {
                                 user.email = value;
                               },
@@ -106,7 +126,7 @@ class _SigninState extends State<Signin> {
                             ),
                             SizedBox(height: 30),
                             TextFormField(
-                              controller: TextEditingController(text: user.password),
+                              controller: _passwordController,
                               onChanged:(value) {
                                 user.password = value;
                               },
@@ -153,9 +173,15 @@ class _SigninState extends State<Signin> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
-                                    onPressed: () {
-                                       save();
-                                      },
+                                    onPressed: 
+                                      _emailController == "" || _passwordController == ""
+                                        ? null
+                                        : () {
+                                          setState(() {
+                                            _isLoading = true;
+                                          });
+                                          signIn(_emailController.text, _passwordController.text);
+                                        },
                                     child: Text(
                                       "Login",
                                       style: TextStyle(

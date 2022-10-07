@@ -8,6 +8,7 @@ import 'package:flutter_main_application/pages/user.dart';
 import 'package:flutter_main_application/pages/dashboard.dart';
 import 'package:flutter_main_application/pages/signin.dart';
 import 'package:flutter_main_application/variables/constant.dart';
+import 'package:email_validator/email_validator.dart';
 
 class Signup extends StatefulWidget {
   Signup({Key? key}) : super(key: key);
@@ -77,18 +78,9 @@ class _SignupState extends State<Signup> {
                         children: [
                           TextFormField(
                             controller: TextEditingController(text: user.email),
-                            onChanged: (value) {
-                              user.email = value;
-                            },
-                            validator: (value) {
-                              if(value == null || value.isEmpty) {
-                                return 'Your email address, is required.';
-                              } else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-                                return null;
-                              } else {
-                                return 'Enter valid credential';
-                              }
-                            },
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (email) => email != null && !EmailValidator.validate(email) ? 'Enter a valid email' :null,
+                            textInputAction: TextInputAction.next,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               hintText: 'carter@gmail.com',
@@ -109,18 +101,10 @@ class _SignupState extends State<Signup> {
                           SizedBox(height: 30,),
                           TextFormField(
                             controller: TextEditingController(text: user.password),
-                            onChanged: (value) {
-                              user.password = value;
-                            },
-                            validator: (value) {
-                              if(value == null || value.isEmpty) {
-                                return 'Your password is required.';
-                              } else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-                                return null;
-                              } else {
-                                return 'Enter valid credential.';
-                              }
-                            },
+                       
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (value) => value !=null && value.length < 8 ? 'Enter min. 8 characters' :null,
+                        
                             style: TextStyle(color: Colors.black),
                             obscureText: passVisi,
                             decoration: InputDecoration(
