@@ -20,6 +20,21 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
 
+  Future save() async {
+    var res = await http.post(Uri.parse("http://localhost:8686/signin"),
+        headers: <String, String>{
+          'Context-Type': 'application/json;charSet=UTF-8'
+        },
+        body: <String, String>{
+          'email': user.email,
+          'password': user.password
+        });
+    print(res.body);
+    Navigator.push(
+        context, new MaterialPageRoute(builder: (context) => Dashboard()));
+  }
+
+  User user = User('', '');
   bool passVisi = true;
 
   @override
@@ -46,7 +61,22 @@ class _SigninState extends State<Signin> {
                 child: Container(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
-                    child: TextFormField(       
+                    child: TextFormField(
+                      controller: TextEditingController(text: user.email),  
+                      onChanged: (value) {
+                        user.email = value;
+                      },    
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Enter something';
+                        } else if (RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value)) {
+                          return null;
+                        } else {
+                          return 'Enter valid email';
+                        }
+                      },
                       style: TextStyle(
                       color: Colors.black
                       ),
@@ -69,7 +99,20 @@ class _SigninState extends State<Signin> {
                 child: Container(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
-                    child: TextFormField(       
+                    child: TextFormField(  
+                      controller: TextEditingController(text: user.password),   
+                      onChanged: (value) {
+                        user.password = value;
+                      },  
+                      validator: (value) {
+                        if (value == null || value.isEmpty){
+                          return 'Enter required info.';
+                        } else if (RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"
+                        ).hasMatch(value)){
+                          return 'Enter valid password';
+                        }
+                      },
                       style: TextStyle(
                       color: Colors.black
                       ),
@@ -112,7 +155,13 @@ class _SigninState extends State<Signin> {
                       ),
                     ),
                     child: Text("Login"),
-                    onPressed: () {},
+                    onPressed: () {
+                      if(_formKey.currentState!.validate()) {
+                        save();
+                      } else {
+                        print("Valid user credentials!");
+                      }
+                    },
                   ),
                 ),
               ),
