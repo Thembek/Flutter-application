@@ -34,7 +34,7 @@ class _OnBoardState extends State<OnBoard> {
       img: 'assets/images/img-3.png',
       text: "Our Founders And Builders",
       desc:
-          "Get to third hand monitor, visually, the projects under development, by our founders and builders.",
+          "Third hand monitor, visually, the projects under development, by our founders and builders.",
       bg: Colors.white,
       button: Color(0xFF1B5E20),
     ),
