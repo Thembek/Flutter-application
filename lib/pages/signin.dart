@@ -19,40 +19,6 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-
-  bool _isLoading = false;
-
-  signIn(String email, String pass) async {
-    String url = "http://localhost:8686/signup"; 
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var jsonResponse;
-    Map body = {"email": email, "password": pass};
-    var res = await http.post(Uri.parse(url), body: body);
-
-    if(res.statusCode == 200) {
-      jsonResponse = json.decode(res.body);
-      print("Response status: ${res.statusCode}");
-      print("Reponse status: ${res.body}");
-
-      if(jsonResponse != null) {
-        setState(() {
-          _isLoading: false;
-        });
-
-        sharedPreferences.setString("token", jsonResponse['token']);
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => Dashboard()), 
-          (Route<dynamic> route) => false);
-      } else {
-        setState(() {
-          _isLoading == false;
-        });
-        print("Response status: ${res.body}");
-      }
-    }
-  }
 
   User user = User('', '');
 
@@ -66,24 +32,13 @@ class _SigninState extends State<Signin> {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/login.png'), 
-          fit: BoxFit.cover),
+          fit: BoxFit.fitHeight),
         ),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           body: Stack(
             children: [
               SizedBox(height: 25),
-              Container(
-                padding: EdgeInsets.only(left: 35, top: 130),
-                child: Text(
-                  'Welcome\nBack',
-                  style: GoogleFonts.pacifico(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
               SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.5),
@@ -95,7 +50,6 @@ class _SigninState extends State<Signin> {
                         child: Column(
                           children: [
                             TextFormField(
-                              controller: _emailController,
                               onChanged: (value) {
                                 user.email = value;
                               },
@@ -113,14 +67,8 @@ class _SigninState extends State<Signin> {
                               decoration: InputDecoration(
                                 hintText: 'carter@gmail.com',
                                 prefixIcon: Icon(Icons.email_outlined, color: Colors.blueGrey),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.grey),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
+                                fillColor: Colors.grey.shade100,
+                                filled: true,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -128,7 +76,6 @@ class _SigninState extends State<Signin> {
                             ),
                             SizedBox(height: 30),
                             TextFormField(
-                              controller: _passwordController,
                               onChanged:(value) {
                                 user.password = value;
                               },
@@ -163,25 +110,28 @@ class _SigninState extends State<Signin> {
                             ),
                             SizedBox(height: 40),
                             Padding(
-                              padding: EdgeInsets.all(20.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Center(
                                 child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.all(15.0),
+                                  fixedSize: Size(250, 50), 
                                   backgroundColor: Colors.green[900],
                                   foregroundColor: Colors.white,
+                                  textStyle: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                                 ),
                                 child: Text(
-                                  "Login",
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    fontWeight: FontWeight.w300,
-                                  ),
+                                  "Login"
                                 ),
                                 onPressed: () {},
                               ),
                               ), 
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: 15),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(160, 0, 0, 0),
                               child: Row(
@@ -198,8 +148,9 @@ class _SigninState extends State<Signin> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(65, 20, 0, 0),
-                              child: Row(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Center(
+                                child: Column(
                                 children: [
                                   Text(
                                     "Don't have an account? ",
@@ -221,6 +172,7 @@ class _SigninState extends State<Signin> {
                                     ),
                                   ),
                                 ],
+                              ),
                               ),
                             ),
                           ],
